@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import Home from "./Home";
-import Navbar from "./Navbar";
+import Navbar from "./NavBar";
 import Restaurant from "./Restaurant";
 
 function App() {
