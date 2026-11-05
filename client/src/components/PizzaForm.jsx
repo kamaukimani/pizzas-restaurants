@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-function PizzaForm({ restaurantId, onAddPizza }) {
+function PizzaForm({ restaurantId, onAddPizza, API_URL }) {
   const [pizzas, setPizzas] = useState([]);
   const [pizzaId, setPizzaId] = useState("");
   const [price, setPrice] = useState("");
   const [formErrors, setFormErrors] = useState([]);
 
   useEffect(() => {
-    fetch("/pizzas")
+    fetch(`${API_URL}/pizzas`)
       .then((r) => r.json())
       .then(setPizzas);
   }, []);
@@ -19,7 +19,7 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       restaurant_id: restaurantId,
       price,
     };
-    fetch("/restaurant_pizzas", {
+    fetch(`${API_URL}/restaurant_pizzas`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +29,8 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       if (r.ok) {
         r.json().then((newPizzaRestaurant) => {
           onAddPizza(newPizzaRestaurant);
+          setPizzaId("");
+          setPrice("");
           setFormErrors([]);
         });
       } else {

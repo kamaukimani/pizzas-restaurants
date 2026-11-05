@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({API_URL}) {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    fetch("/restaurants")
+    fetch(`${API_URL}/restaurants`)
       .then((r) => r.json())
       .then(setRestaurants);
   }, []);
 
   function handleDelete(id) {
-    fetch(`/restaurants/${id}`, {
+    fetch(`${API_URL}/restaurants/${id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
