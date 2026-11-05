@@ -16,8 +16,9 @@ def create_app():
     api=Api(app)
 
     api.add_resource(Restaurants,'/restaurants',endpoint="restaurants")
-    api.add_resource(RestaurantById,'/restaurants/<int:id>')
-    api.add_resource(Pizzas,'/pizzas')
+    api.add_resource(RestaurantById,'/restaurants/<int:id>',endpoint="restaurants_id")
+    api.add_resource(Pizzas,'/pizzas',endpoint="pizzas")
+    api.add_resource(RestaurantPizzas,'/restaurant_pizzas',endpoint="restaurant_pizzas")
 
 
 
