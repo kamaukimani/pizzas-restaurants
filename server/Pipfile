@@ -13,6 +13,7 @@ flask-cors = "*"
 python-dotenv = "*"
 sqlalchemy-serializer = "*"
 psycopg = {extras = ["pool", "binary"], version = "*"}
+gunicorn = "*"
 
 [dev-packages]
 
