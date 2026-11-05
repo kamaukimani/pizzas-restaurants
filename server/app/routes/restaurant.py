@@ -9,3 +9,15 @@ class Restaurants(Resource):
         return make_response(
             restaurants,200
         )
+
+class RestaurantById(Resource):
+    def get(self,id):
+        restaurant=Restaurant.query.filter_by(id=id).first()
+
+        if restaurant:
+            response=restaurant.to_dict()
+
+            return make_response(
+                response,200
+            )
+        return {"error":"Restaurant not found"},404
