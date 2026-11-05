@@ -6,7 +6,7 @@ from sqlalchemy_serializer import SerializerMixin
 class RestaurantPizza(db.Model,SerializerMixin):
     __tablename__="restaurant_pizzas"
 
-    serialize_rules=("-pizza.restaurant_pizzas")
+    serialize_rules=("-pizza.restaurant_pizzas",)
 
     id:Mapped[int]=mapped_column(primary_key=True)
     price:Mapped[int]

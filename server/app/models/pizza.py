@@ -7,7 +7,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 class Pizza(db.Model,SerializerMixin):
     __tablename__="pizzas"
 
-    serialize_rules=("-restaurant_pizzas.pizza")
+    serialize_rules=("-restaurant_pizzas.pizza",)
 
     id:Mapped[int]=mapped_column(primary_key=True)
     name:Mapped[str]
