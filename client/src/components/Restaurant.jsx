@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PizzaForm from "./PizzaForm";
 
-function Home() {
+function Restaurant({API_URL}) {
   const [{ data: restaurant, error, status }, setRestaurant] = useState({
     data: null,
     error: null,
@@ -11,7 +11,7 @@ function Home() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`/restaurants/${id}`).then((r) => {
+    fetch(`${API_URL}/restaurants/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((restaurant) =>
           setRestaurant({ data: restaurant, error: null, status: "resolved" })
@@ -63,10 +63,10 @@ function Home() {
       </div>
       <div className="card">
         <h3>Add New Pizza</h3>
-        <PizzaForm restaurantId={restaurant.id} onAddPizza={handleAddPizza} />
+        <PizzaForm restaurantId={restaurant.id} onAddPizza={handleAddPizza} API_URL={API_URL}/>
       </div>
     </section>
   );
 }
 
-export default Home;
+export default Restaurant;

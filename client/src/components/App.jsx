@@ -4,17 +4,19 @@ import Navbar from "./NavBar";
 import Restaurant from "./Restaurant";
 
 function App() {
+
+  const API_URL="http://0.0.0.0:8080"
   return (
     <>
       <Navbar />
       <Routes>
         <Route
           path="/restaurants/:id"
-          element={<Restaurant />}
+          element={<Restaurant API_URL={API_URL}/>}
         />
         <Route 
          path="/"
-          element={<Home />}
+          element={<Home API_URL={API_URL}/>}
         />
       </Routes>
     </>
