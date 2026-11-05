@@ -1,0 +1,24 @@
+import { Route, Routes } from "react-router";
+import Home from "./Home";
+import Navbar from "./NavBar";
+import Restaurant from "./Restaurant";
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/restaurants/:id"
+          element={<Restaurant />}
+        />
+        <Route 
+         path="/"
+          element={<Home />}
+        />
+      </Routes>
+    </>
+  );
+}
+
+export default App;
